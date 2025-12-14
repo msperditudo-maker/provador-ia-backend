@@ -17,22 +17,26 @@ export default async function handler(req, res) {
     }
 
     const output = await replicate.run(
-      "cuuupid/idm-vton",
+      "yisol/idm-vton",
       {
         input: {
           human_img: userImage,
           garm_img: shirtImage,
-          garment_des: "t-shirt"
+          garment_type: "upper_body"
         }
       }
     );
 
     return res.status(200).json({
       success: true,
-      image: output[0]
+      image: output
     });
 
   } catch (err) {
-    return res.status(500).json({ error: "Erro ao gerar imagem" });
+    console.error(err);
+    return res.status(500).json({
+      error: "Erro ao gerar imagem",
+      details: err.message
+    });
   }
 }
