@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         input: {
           human_img: userImage,
           garm_img: shirtImage,
-          garment_des: "t-shirt"
+          garment_des: "upper_body"
         }
       }
     );
